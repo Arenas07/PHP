@@ -9,7 +9,7 @@ declare(strict_types=1); // Habilita el modo estricto de tipos: los tipos deben 
 class Venta {
     
     public float $total;       // Total de la venta
-    public string $fecha;      // Fecha de la venta
+    private string $fecha;      // Fecha de la venta
     public array $conceptos;   // Arreglo de objetos Concept (productos/servicios)
 
     public static int $count = 0;  // Contador de ventas creadas
@@ -36,7 +36,21 @@ class Venta {
     public function __destruct(){
         echo "El objeto ha sido destruido.<br>";
     }
+
+    public function getDate(): string {
+        return $this->fecha; // Devuelve la fecha de la venta
+    }
+
+    public function setDate(string $fecha){
+        if(strlen($fecha) !== 10){
+            echo "La fecha no es válida.<br>";
+            return;
+        }
+        
+        $this->fecha = $fecha; // Establece la fecha de la venta
+    }
 }
+
 
 // **********************************************
 // CLASE Concept: representa un ítem de la venta
@@ -80,6 +94,9 @@ echo $onlineSale->showInfo() . "<br>";
 
 // Creamos una nueva venta
 $venta = new Venta(10.5, date("Y-m-d"));
+
+$venta->setDate("2020-12-12");
+echo $venta->getDate(); 
 
 // Creamos un concepto y lo agregamos a la venta
 $concepto = new Concept("Cerveza", 10);
