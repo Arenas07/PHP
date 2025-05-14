@@ -1,0 +1,5 @@
+(Este archivo de texto se creó automaticamente en el archivo traits.php)
+
+2025-05-14 11:56:07-Se creo la factura
+
+
